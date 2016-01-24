@@ -3,6 +3,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RSS_Feed_Reader"
-    RequestedTheme="Light">
-
+    RequestedTheme="Light"
+    xmlns:viewModels="using:RSS_Feed_Reader.ViewModel">
+    <Application.Resources>
+        <viewModels:MainPageViewModel x:Key="MainPageViewModel"/>
+    </Application.Resources>
 </Application>
