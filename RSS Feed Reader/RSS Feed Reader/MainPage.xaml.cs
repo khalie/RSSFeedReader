@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RSS_Feed_Reader.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,14 +18,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace RSS_Feed_Reader
 {
-    /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
-    /// </summary>
-    public sealed partial class MainPage : Page
+  /// <summary>
+  /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
+  /// </summary>
+  public sealed partial class MainPage : Page
+  {
+    public MainPage()
     {
-        public MainPage()
-        {
-            this.InitializeComponent();
-        }
+      this.InitializeComponent();
+
+      this.DataContext = new MainPageViewModel();
     }
+  }
 }
