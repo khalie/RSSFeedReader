@@ -6,17 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Web.Syndication;
 using RSS_Feed_Reader.Model;
+using System.Windows.Input;
 
 namespace RSS_Feed_Reader.ViewModel
 {
     public class MainPageViewModel
     {
-        public ObservableCollection<SyndicationItem> News { get; set; }
+    
+
+    public ObservableCollection<SyndicationItem> News { get; set; }
 
         public MainPageViewModel()
         {
             News = new ObservableCollection<SyndicationItem>();
-
+            _loadCommand = new RelayCommand(this.LoadNews, () => true);
         }
 
         public async void LoadNews()
@@ -30,5 +33,15 @@ namespace RSS_Feed_Reader.ViewModel
             }
 
         }
+
+    #region commands
+
+    private readonly ICommand _loadCommand;
+    public ICommand loadCommand
+    {
+      get { return _loadCommand; }
     }
+
+    #endregion
+  }
 }
