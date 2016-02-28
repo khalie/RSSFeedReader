@@ -10,29 +10,18 @@ using System.Windows.Input;
 
 namespace RSS_Feed_Reader.ViewModel
 {
-    public class MainPageViewModel
-    {
-    
+  public class MainPageViewModel
+  {
 
     public ObservableCollection<SyndicationItem> News { get; set; }
 
-        public MainPageViewModel()
-        {
-            News = new ObservableCollection<SyndicationItem>();
-            _loadCommand = new RelayCommand(this.LoadNews, () => true);
-        }
+    public MainPageViewModel()
+    {
+      News = new ObservableCollection<SyndicationItem>();
+      _loadCommand = new RelayCommand(this.LoadNews, () => true);
+    }
 
-        public async void LoadNews()
-        {
-            RSSReader rssReader = new RSSReader();
-            var news = await rssReader.LoadNewsAsync();
 
-            foreach (var syndicationItem in news)
-            {
-                News.Add(syndicationItem);
-            }
-
-        }
 
     #region commands
 
@@ -40,6 +29,22 @@ namespace RSS_Feed_Reader.ViewModel
     public ICommand loadCommand
     {
       get { return _loadCommand; }
+    }
+
+    #endregion
+
+    #region methods
+
+    public async void LoadNews()
+    {
+      RSSReader rssReader = new RSSReader();
+      var news = await rssReader.LoadNewsAsync();
+
+      foreach (var syndicationItem in news)
+      {
+        News.Add(syndicationItem);
+      }
+
     }
 
     #endregion

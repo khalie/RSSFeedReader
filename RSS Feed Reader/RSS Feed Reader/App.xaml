@@ -8,13 +8,13 @@
   <Application.Resources>
     <viewModels:MainPageViewModel x:Key="MainPageViewModel" />
     <DataTemplate x:Key="NewsDataTemplate">
-      <Grid Width="200" Height="200" Margin="10" Background="Orange" >
+      <Grid Width="200" Height="200" Background="Orange">
         <Grid.RowDefinitions>
-          <RowDefinition Height="60"/>
+          <RowDefinition Height="50"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="" FontWeight="Bold"/>
-        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding Summary.Text}"/>
+        <TextBlock x:Name="textBlock" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Title.Text}" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Summary.Text}"/>
       </Grid>
     </DataTemplate>
   </Application.Resources>
