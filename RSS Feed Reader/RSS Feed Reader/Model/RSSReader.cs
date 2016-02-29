@@ -10,13 +10,13 @@ namespace RSS_Feed_Reader.Model
   public class RSSReader
   {
     /// <summary>
-    /// Creates the syndicationClient Object that loads the defined News Feed.
+    /// Creates the syndicationClient Object that loads the given News Feed.
     /// </summary>
     /// <returns>List of Syndication Items</returns>
-    public async Task<IList<SyndicationItem>> LoadNewsAsync()
+    public async Task<IList<SyndicationItem>> LoadNewsAsync(Uri uri)
     {
       SyndicationClient syndicationClient = new SyndicationClient();
-      var feeds = await syndicationClient.RetrieveFeedAsync(new Uri("http://blog.pdapda.de/feed/"));
+      var feeds = await syndicationClient.RetrieveFeedAsync(uri);
 
       return feeds.Items;
     }

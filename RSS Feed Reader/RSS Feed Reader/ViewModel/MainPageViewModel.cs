@@ -19,6 +19,9 @@ namespace RSS_Feed_Reader.ViewModel
     {
       News = new ObservableCollection<SyndicationItem>();
       _loadCommand = new RelayCommand(this.LoadNews, () => true);
+
+      // Load the Newsfeed on startup
+      LoadNews();
     }
 
 
@@ -35,10 +38,17 @@ namespace RSS_Feed_Reader.ViewModel
 
     #region methods
 
+    /// <summary>
+    /// Method which loads the News Feed and adds the items to the "News" Collection.
+    /// </summary>
     public async void LoadNews()
     {
       RSSReader rssReader = new RSSReader();
-      var news = await rssReader.LoadNewsAsync();
+
+      // Clear the Collection. Otherwise the Collection dupicates on every loading.
+      News.Clear();
+
+      var news = await rssReader.LoadNewsAsync(new Uri("http://blog.pdapda.de/feed/"));
 
       foreach (var syndicationItem in news)
       {
